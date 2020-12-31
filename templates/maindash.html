@@ -1,0 +1,142 @@
+{% extends "dashboard.html" %}
+
+{% block title %}| Dashboard{% endblock %}
+
+{% block dashboard %}
+    {% if session.username %}
+    <div class="text-center p-5">
+        <h1 class="text-primary">Welcome, {{ session.username }}!</h1>
+    </div>
+    {% else %}
+    <div class="text-center p-5">
+        <h1 class="text-primary">Welcome to the main dashboard</h1>
+    </div>
+    {% endif %}
+
+    {% if contactCount %}
+    <div class="row">
+        <div class="col-sm">
+            <div class="card border-primary mb-3">
+                <div class="card-header">Your contacts</div>
+                <div class="card-body text-primary">
+                    {% if contactCount %}
+                    <h5 class="card-title">Right now you have {{ contactCount }} contacts</h5>
+                    <p class="card-text">How about adding more?</p>
+                    {% else %}
+                    <h5 class="card-title">You don't have contacts.</h5>
+                    <p class="card-text">Add a contact to start</p>
+                    {% endif %}
+                    <a href="/contacts"><button class="btn btn-primary">Add contacts</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card border-primary mb-3">
+                <div class="card-header">Your histories</div>
+                <div class="card-body text-primary">
+                    {% if urgentHistorys | length != 0 %}
+                    <h5 class="card-title">You registered {{ urgentHistorys | length }} histories</h5>
+                    <p class="card-text">You can add as many histories as you want for any contact</p>
+                    <a href="/historys"><button class="btn btn-primary">View historys</button></a>
+                    {% else %}
+                    <h5 class="card-title">You don't have historys</h5>
+                    <p class="card-text">Create historys and notes to follow up with your businesses</p>
+                    <a href="/historys"><button class="btn btn-primary">View historys</button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card border-primary mb-3">
+                <div class="card-header">Your talks</div>
+                <div class="card-body text-primary">
+                    {% if talksCount %}
+                    <h5 class="card-title">You talked {{ talksCount }} times</h5>
+                    <p class="card-text">Create notes about the conversations you have</p>
+                    <a href="/historys"><button class="btn btn-primary">Create a note</button></a>
+                    {% else %}
+                    <h5 class="card-title">No talks, yet!</h5>
+                    <p class="card-text">After your first note, this card will change</p>
+                    <a href="/historys"><button class="btn btn-primary">Create a note</button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="p-5 border border-primary rounded-top border-bottom-0">
+        <h1 class="text-primary">Most urgent histories</h1>
+    </div>
+    <div class="table-responsive border border-primary rounded-bottom border-top-0">
+
+        <div class="dropdown m-3">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort by:
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/dashboard?sortby=urgent">Urgent</a>
+                <a class="dropdown-item" href="/dashboard?sortby=notUrgent">Not urgent</a>
+            </div>
+        </div>
+
+        <div class="d-inline-block ml-3 mb-3">
+            <span class="badge rounded-pill bg-info"><span class="invisible">.</span></span> <span class="ml-2 mr-2">Today</span>
+            <span class="badge rounded-pill bg-warning"><span class="invisible">.</span></span><span class="ml-2 mr-2" id="warning-label">5 days</span>
+            <span class="badge rounded-pill bg-danger"><span class="invisible">.</span></span><span class="ml-2 mr-2" id="danger-label">5 days</span>
+        </div>
+
+        <table class="table table-striped mb-0">
+            <thead class="table-primary">
+                <tr>
+                    <th class="d-none">histID</th><th class="d-none">contID</th><th>Name</th><th>Last name</th><th>Subject</th><th>Follow up</th><th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if urgentHistorys %}
+                {% for item in urgentHistorys %}
+                <tr>
+                    <td class="d-none">{{ item[0] }}</td>
+                    <td class="d-none">{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>{{ item[3] }}</td>
+                    <td>{{ item[4] }}</td>
+                    {% if item[5] %}
+                        <td>{{ item[5] }}</td>
+                    {% else %}
+                        <td>None</td>
+                    {% endif %}
+                    <td><button class="btn btn-primary btn-sm float-right">Edit</button></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <td colspan="7" class="text-center">You have no historys. Start by adding <a href="/contacts">one</a>!</td>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.7/dayjs.min.js" integrity="sha512-kZ+x2gdehn6OZMWZSp3Vt5R+v9hQTYEATQwaUfWquhxbvNVAy6IRtYs7asdyxKUTqG0I5ZqBqnzcBrpnHJCAGw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.7/plugin/relativeTime.min.js" integrity="sha512-2Sb0BW+c8+/rhj243eqCrgws9FsZkMjH8ErZvcT4HR1HzLpHMfqsSgnJ+gMvH+/GJmu6wdNOu54n93XwbQDCKQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.7/plugin/updateLocale.min.js" integrity="sha512-9LpOnjzBvNmNxcpSwI5FATX+9b9F1YPw/N7gQkTmGfSnZ+9DjYobQrVmYkNo0svsN10ifCl7uAUY7Rft9NEW5g==" crossorigin="anonymous"></script>
+    <script>dayjs.extend(window.dayjs_plugin_relativeTime)</script>
+    <script>dayjs.extend(window.dayjs_plugin_updateLocale)</script>
+    <script src="/static/js/historyview.js"></script>
+    <script src="/static/js/maindash.js"></script>
+    {% else %}
+    <div class="d-flex justify-content-center">
+        <div class="border border-primary rounded w-sm-50 p-5">
+            <h2 class="text-primary mb-4">It seems that this is your first time here.</h2>
+            <p>It is pretty simple to use this app. You can:</p>
+            <ul>
+                <li>Add your first <a href="/contacts">contact</a></li>
+                <li>Follow up with any conversation / businesses you have with them by creating a <a href="/historys">history</a></li>
+                <li>You can add <a href="/historys">notes</a> for each talk you have</li>
+                <li>View the most urgent historys in the <a href="/">dashboard</a> to help you keep track of your conversations</li>
+            </ul>
+            <p>This page will show the most urgent historys first. You can change the time of the history warnings in your <a href="/profile">profile</a></p>
+            <small>Made with &#10084; for CS50x2020</small>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

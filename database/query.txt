@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS users (
+	'user_id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	'username' TEXT NOT NULL UNIQUE,
+	'hash' TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS contacts (
+	'contact_id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	'name' TEXT NOT NULL,
+	'lastname' TEXT,
+	'phone' INTEGER,
+	'user_id' INTEGER NOT NULL,
+	FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE IF NOT EXISTS historys (
+	'history_id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	'subject' TEXT NOT NULL,
+	'followup_datetime' TEXT,
+	'user_id' INTEGER NOT NULL,
+	'contact_id' INTEGER NOT NULL,
+	FOREIGN KEY(user_id) REFERENCES users(user_id),
+	FOREIGN KEY(contact_id) REFERENCES contacts(contact_id)
+);
+
+CREATE TABLE IF NOT EXISTS talks (
+	'talk_id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	'conversation' TEXT NOT NULL,
+	'datetime' TEXT NOT NULL,
+	'service' TEXT NOT NULL,
+	'history_id' INTEGER NOT NULL,
+	FOREIGN KEY(history_id) REFERENCES historys(history_id)
+);

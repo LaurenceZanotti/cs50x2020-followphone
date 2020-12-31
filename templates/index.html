@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}| Welcome{% endblock %}
+
+{% block main %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <!-- If a message was sent by server -->
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} text-center" role="alert" id="alert-header">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- Brand -->
+    <div class="text-center pb-5 pt-5">
+        <div class="dropdown d-inline float-left">
+            <img src="/static/img/menu_icon.png" class="menu dropdown-toggle m-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#login-form">Login</a>
+                <a class="dropdown-item" href="#register-form">Register</a>
+            </div>
+        </div>
+
+        <a href="/" class="brand-title text-white text-decoration-none">FollowPhone</a>
+
+        <div class="menu float-right"><img src="/static/img/menu_icon.png" class="menu float-right m-3 invisible"></div>
+    </div>
+
+    <!-- Main banner -->
+    <div class="main-banner">
+        <div class="image-container">
+            <img src="/static/img/telephonebox.png" id="image-banner">
+        </div>
+
+        <div class="call-to-action">
+            <div class="call-to-wrapper">
+                <span id="demo-text">
+                    An easy way to keep track of your contacts' interest
+                    and follow up with them!
+                </span>
+                <button class="btn btn-success" id="btn-get-started">Get started!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login form-->
+    <section class="modal-background">
+        <div class="index-form mt-5 mb-5 ml-auto mr-auto" id="login-form">
+        <form action="/" method="POST">
+            <div class="form-group text-center">
+                <label class="paragraph-font mb-4">Enter your account details</label>
+                <input name="username" type="text" class="form-control" placeholder="Username" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <input name="password" type="password" class="form-control" placeholder="Password">
+            </div>
+            <input type="submit" name="login-form" value="Log in" class="btn btn-success mt-3">
+            <button class="btn btn-dark mt-3">Cancel</button>
+        </form>
+        </div>
+    </section>
+
+    <!-- Register form -->
+    <section class="modal-background">
+        <div class="index-form mt-5 mb-5 ml-auto mr-auto" id="register-form">
+            <form action="/" method="POST">
+                <div class="form-group text-center">
+                    <label class="paragraph-font mb-4">Register an account</label>
+                    <input name="username" type="text" class="form-control" placeholder="Username" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input name="confirmation" type="password" class="form-control" placeholder="Confirm password">
+                </div>
+                <input type="submit" name="register-form" value="Register" class="btn btn-success mt-3">
+                <button class="btn btn-dark mt-3">Cancel</button>
+            </form>
+        </div>
+    </section>
+    <div class="background"></div>
+    <!--<footer class="whitespace"></footer>-->
+    <script src="static/js/index.js"></script>
+
+
+{% endblock %}

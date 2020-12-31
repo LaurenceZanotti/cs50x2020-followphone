@@ -1,0 +1,83 @@
+{% extends "dashboard.html" %}
+
+{% block title %}| Profile{% endblock %}
+
+{% block dashboard %}
+<div class="text-center">
+    <h1 class="text-primary m-5">Your profile</h1>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="mb-5 profile-wrapper">
+        <div class="border border-primary rounded p-3">
+            <div class="text-center text-primary">
+                <h2 class="m-5">{{ session.username }}</h2>
+            </div>
+
+            <h2 class="text-primary mb-4">Change password</h2>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="oldpassword" class="form-label">Current password</label>
+                    <input name="oldpassword" type="password" class="form-control" id="oldpassword">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">New password</label>
+                    <input name="newpassword" type="password" class="form-control" id="password">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirm your new password</label>
+                    <input name="confirmation" type="password" class="form-control" id="confirm-password">
+                </div>
+                <button type="submit" class="btn btn-primary" name="change-password">Change password</button>
+            </form>
+
+            <hr class="m-5">
+
+            <h2 class="text-primary mb-4">Follow up alerts</h2>
+            <form>
+
+                <div class="mb-3">
+                    <small class="form-text mb-3">Change the the alerts based on the time passed since a history had follow up (e.g., entering 5 will change the color of each history that has passed 5 days without follow up)</small>
+                    <label for="warning-input" class="form-label">Warnings</label>
+                    <input name="warning-input" type="number" min="0" max="365" class="form-control" id="warning-input">
+                </div>
+
+                <small class="form-text mb-3">Choose between days or hours</small>
+                <div class="form-check form-check-inline form-switch">
+                    <input class="form-check-input" type="radio" name="warning-radio" value="days" id="warning-days-check" checked>
+                    <label class="form-check-label" for="warning-days-check">
+                        Days
+                    </label>
+                </div>
+                <div class="form-check form-check-inline form-switch">
+                    <input class="form-check-input" type="radio" name="warning-radio" value="hours" id="warning-hours-check">
+                    <label class="form-check-label" for="warning-hours-check">
+                        Hours
+                    </label>
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="danger-input" class="form-label">Dangers</label>
+                    <input name="danger-input" type="number" min="0" max="365" class="form-control" id="danger-input">
+                </div>
+
+                <small class="form-text mb-3">Choose between days or hours</small>
+                <div class="form-check form-check-inline form-switch">
+                    <input class="form-check-input" type="radio" name="danger-radio" value="days" id="danger-days-check" checked>
+                    <label class="form-check-label" for="danger-days-check">
+                        Days
+                    </label>
+                </div>
+                <div class="form-check form-check-inline form-switch">
+                    <input class="form-check-input" type="radio" name="danger-radio" value="hours" id="danger-hours-check">
+                    <label class="form-check-label" for="danger-hours-check">
+                        Hours
+                    </label>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-warning mt-4" name="change-urgency">Set urgency</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/js/profile.js"></script>
+{% endblock %}

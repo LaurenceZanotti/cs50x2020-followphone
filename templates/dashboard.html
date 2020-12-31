@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="dashboard-wrapper">
+        <!-- Side bar menu -->
+        <nav class="sidebar" id="sidebar">
+            <div class="side-option">
+                <a href="/dashboard"><img id="home-btn" class="side-image" alt="Home" title="Go home" src="/static/img/homebtn.png"></a>
+            </div>
+
+            <div class="side-option">
+                <a href="/historys"><img id="newhistory-btn" class="side-image" alt="Historys" title="Your histories" src="/static/img/talks.png"></a>
+            </div>
+
+            <div class="side-option">
+                <a href="/contacts"><img id="newcontact-btn" class="side-image" alt="Contacts" title="Your contacts" src="/static/img/new-contactbtn.png"></a>
+            </div>
+
+            <div class="side-option">
+                <a href="/profile"><img id="config-btn" class="side-image" alt="Profile" title="Your profile" src="/static/img/config.png"></a>
+            </div>
+
+            <div class="side-option">
+                <a href="/signout"><img id="signout-btn" class="side-image" alt="Sign out" title="Sign out" src="/static/img/signout.png"></a>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="main-content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <!-- If a message was sent by server -->
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} text-center" role="alert" id="alert-header">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            {% block dashboard %}{% endblock %}
+        </div>
+        <script src="/static/js/dashboard.js"></script>
+    </div>
+{% endblock %}

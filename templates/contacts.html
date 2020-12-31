@@ -1,0 +1,98 @@
+{% extends "dashboard.html" %}
+
+{% block title %}| Contacts{% endblock %}
+
+{% block dashboard %}
+
+    <div class="button-wrapper border border-primary rounded mb-3">
+        <button class="btn btn-primary add-btn" id="btn-addcontact">Add contact</button>
+        {% if tabledata %}
+            <button class="btn btn-success add-btn" id="btn-addhistory">Add history</button>
+        {% else %}
+            <button class="btn btn-success add-btn" id="btn-addhistory" disabled title="You must add/select a contact first">Add history</button>
+        {% endif %}
+    </div>
+    <div class="border border-bottom-0 border-primary rounded-top p-3">
+    {% if tabledata %}
+        <h1 class="m-5 text-primary">Select a contact</h1>
+    {% else %}
+        <h1 class="m-5 text-primary">You must add a contact to proceed</h1>
+    {% endif %}
+    </div>
+    <div class="table-wrapper border border-primary border-top-0 rounded-bottom">
+        <table class="table table-hover table-striped mb-0">
+            <thead class="table-primary">
+                <tr>
+                    <th class="d-none" scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Phone</th>
+                    <!--<th scope="col">History</th>-->
+                    <!--<th scope="col">Follow up date</th>-->
+                </tr>
+            </thead>
+            <tbody class="cursor-table" title="Click in a row to select a contact">
+                {% if tabledata %}
+                    {% for item in tabledata %}
+                        <tr>
+                            <td class="d-none">{{ item.__dict__["contact_id"] }}</td><td>{{ item.__dict__["name"] }}</td><td>{{ item.__dict__["lastname"] }}</td><td>{{ item.__dict__["phone"] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">You have no contacts.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add contact modal form -->
+    <section class="modal-background">
+        <div class="index-form mt-5 mb-5 ml-auto mr-auto" id="addcontact-form">
+            <form action="/contacts/add-contact" method="POST">
+                <div class="form-group text-center">
+                    <label class="paragraph-font mb-4">Add contact</label>
+                    <input name="name" type="text" class="form-control" placeholder="Name" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input name="lastname" type="text" class="form-control" placeholder="Lastname" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input name="phone" type="text" class="form-control phone-input" placeholder="Phone" autocomplete="off" maxlength="35">
+                </div>
+                <input type="submit" name="addcontact-form" value="Add contact" class="btn btn-success mt-3">
+                <button class="btn btn-dark mt-3">Cancel</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Add contact history form -->
+    <section class="modal-background">
+        <div class="index-form mt-5 mb-5 ml-auto mr-auto" id="addhistory-form">
+            <form action="/contacts/add-history" method="POST">
+                <div class="form-group text-center">
+                    <label class="paragraph-font mb-4">Add history</label>
+                    <input name="subject" type="text" class="form-control" placeholder="Subject" autocomplete="off">
+                </div>
+                <small class="pl-1">Follow up date and time</small>
+                <div class="form-group">
+                    <input name="followupdate" type="text" class="date-input form-control mt-1" placeholder="yyyy-mm-dd" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input name="followuptime" type="text" class="time-input form-control mt-1" placeholder="hh:mm" autocomplete="off">
+                </div>
+                <div class="form-group d-none">
+                    <input name="contact-id" type="text" class="form-control" placeholder="Contact id">
+                </div>
+                <small class="pl-1">Selected contact: <span id="selected-contact">none</span></small><br>
+                <input type="submit" name="addhistory-form" value="Add history" class="btn btn-success mt-3">
+                <button class="btn btn-dark mt-3">Cancel</button>
+            </form>
+        </div>
+    </section>
+    <script src="/static/js/cleave.min.js"></script>
+    <script src="/static/js/createcontact.js"></script>
+    <script src="/static/js/inputformat.js"></script>
+{% endblock %}

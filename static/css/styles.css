@@ -1,0 +1,273 @@
+/* GLOBAL STYLES */
+
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700&family=Roboto&family=Lato&display=swap');
+
+body, p {
+    font-family: 'Roboto', 'Lato', sans-serif;
+}
+
+.background {
+    position: fixed;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #480CA8 0%, #3F37C9 47.75%, #4361EE 100%);
+}
+
+.modal-background {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);  /* Fallback */
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.brand-title {
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-size: 3em;
+    display: inline-block;
+}
+
+.paragraph-font {
+    font-family: 'Roboto', 'Lato', sans-serif;
+}
+
+.menu {
+    width: 3em;
+    display: inline-block;
+}
+
+.menu:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+tbody.cursor-table {
+    cursor: pointer;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.index-form {
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: white;
+    box-shadow: 2px 2px black;
+    max-width: 100%;
+    width: 40em;
+    border-radius: 15px;
+    padding: 3em;
+}
+
+@media screen and (max-width: 667px) {
+    .index-form {
+        max-width: 100vw;
+        width: 100vw;
+        padding: 1em;
+    }
+}
+
+/* Index styles */
+
+.whitespace {
+    height: 500px;
+}
+
+.main-banner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+                    "a b"
+                    "a b";
+    margin: auto;
+    color: white;
+}
+
+.image-container {
+    grid-area: a;
+}
+
+#image-banner {
+    max-width: 22em;
+    float: right;
+}
+
+.call-to-action {
+    grid-area: b;
+}
+
+.call-to-wrapper {
+    position: relative;
+    float: left;
+    left: -5em;
+    margin-top: 3rem;
+}
+
+#demo-text {
+    display: block;
+    font-size: 1.15em;
+    font-weight: bold;
+    max-width: 25em;
+    margin: 3rem;
+    text-align: center;
+}
+
+#btn-get-started {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    max-width: 25em;
+    height: 3em;
+    margin: 3rem auto;
+}
+
+@media screen and (max-width: 667px) {
+    .main-banner {
+        grid-template-areas:
+                        "a a"
+                        "b b";
+    }
+
+    .image-container {
+        grid-area: b;
+    }
+
+    .call-to-action {
+        grid-area: a;
+    }
+
+    .call-to-wrapper {
+        position: static;
+    }
+
+    #demo-text {
+        grid-area: b;
+    }
+
+    #image-banner {
+        max-width: 15em;
+        margin: auto;
+        display: block;
+        float: none;
+    }
+}
+
+/* Dashboard and sidebar */
+
+.dashboard-wrapper {
+    display: flex;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #480CA8 0%, #3F37C9 47.75%, #4361EE 100%);
+}
+
+.side-option {
+    overflow: hidden;
+    margin: 2em 0.5em;
+}
+
+.side-image {
+    display: block;
+    max-width: 2em;
+}
+
+.side-image:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.main-content {
+    /* Center components */
+    width: 100%;
+    padding: 1rem;
+}
+
+/* Create contact */
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.add-btn {
+    height: 7em;
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0.5em;
+}
+
+@media screen and (max-width: 667px) {
+    .button-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* Talk view */
+
+#btn-addtalk {
+    height: 4em;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.summary-wrapper {
+    margin: 1rem;
+    padding: 3rem;
+}
+
+.summary-text {
+    font-size: 1.5rem;
+}
+
+.left-summary {
+    float: left;
+}
+
+.right-summary {
+    float: right;
+}
+
+.left-summary, .right-summary {
+    margin: 1rem;
+}
+
+.card-margin {
+    margin: 1rem;
+}
+
+@media screen and (max-width: 667px) {
+    .left-summary, .right-summary {
+        float: none;
+        margin: 0;
+    }
+
+    .summary-wrapper {
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .card-margin {
+        margin: 0;
+        margin-top: 1rem;
+    }
+}
+
+/* Profile styles */
+
+.profile-wrapper {
+    width: 50rem;
+    max-width: 50rem;
+}

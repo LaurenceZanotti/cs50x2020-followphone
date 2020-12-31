@@ -1,0 +1,83 @@
+{% extends "dashboard.html" %}
+
+{% block title %}| History: {{ history.subject }}{% endblock %}
+
+{% block dashboard %}
+    {% if history %}
+        <div class="summary-wrapper border border-primary rounded">
+            <div>
+                <h1 class="text-center mb-5">{{ history.subject }}</h1>
+            </div>
+            <hr>
+            <div class="m-sm-5">
+                <h2>Summary</h2>
+            </div>
+            <div class="clearfix summary-text">
+                <div class="left-summary">
+                    <p>{{ history.name }} {{ history.lastname }}</p>
+                    <p>Phone: {{ history.phone }}</p>
+                </div>
+                <div class="right-summary">
+                    <p>Follow up: {{ history.followup_datetime }}</p>
+                    {% if talks %}
+                        <p>Last contact: {{ talks[0].datetime }}</p>
+                    {% else %}
+                        <p>Last contact: None</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Create note -->
+        <div class="card border-primary card-margin">
+            <div class="card-header">Create a note</div>
+            <div class="card-body text-primary">
+                <button class="btn btn-primary form-control" id="btn-addtalk">Add talk</button>
+            </div>
+        </div>
+
+        {% if talks %}
+            {% for talk in talks %}
+                <div class="card border-primary card-margin">
+                    <div class="card-header">{{ talk.datetime }} - {{ talk.service }}</div>
+                    <div class="card-body text-primary">
+                        <p>{{ talk.conversation }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Add contact modal form -->
+        <div class="modal-background">
+            <div class="index-form mt-5 mb-5 ml-auto mr-auto" id="addcontact-form">
+                <form method="POST" action="/historys/viewtalks">
+                    <div class="form-group text-center">
+                        <label>Add talk</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="conversation" placeholder="What have you talked?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="service" placeholder="Service provided" maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Follow up date and time</label>
+                        <input class="date-input form-control" type="text" name="followup_date" placeholder="yyyy-mm-dd">
+                    </div>
+                    <div class="form-group">
+                        <input class="time-input form-control" type="text" name="time" placeholder="hh:mm">
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Add talk">
+                    <button class="btn btn-dark">Cancel</button>
+                </form>
+            </div>
+        </div>
+        <script src="/static/js/cleave.min.js"></script>
+        <script src="/static/js/talk.js"></script>
+        <script src="/static/js/inputformat.js"></script>
+    {% else %}
+    <div class="text-center m-5">
+        <h1>You haven't selected a history. Please <a href="/historys">select one</a> to proceed.</h1>
+    </div>
+    {% endif %}
+{% endblock %}
