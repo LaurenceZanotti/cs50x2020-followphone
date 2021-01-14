@@ -4,4 +4,4 @@ Flask-SQLAlchemy
 SQLAlchemy
 requests
 gunicorn
-psycopg2
+

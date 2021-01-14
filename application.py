@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, flash, render_template, redirect, request, session
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
@@ -15,6 +17,8 @@ app = Flask(__name__)
 # https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/followphone.db'
 db = SQLAlchemy(app)
+
+app.secret_key = os.getenv('SECRET_KEY')
 
 """
 Load tables
@@ -47,6 +51,7 @@ def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
+    print(session)
     return response
 
 # Configure session to use filesystem (instead of signed cookies)
