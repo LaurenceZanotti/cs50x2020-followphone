@@ -1,69 +1,75 @@
-# FollowPhone - CS50X 2020 Final Project
+# FollowPhone - Projeto Final CS50X 2020
 
 ![Mockup](static/img/followphone_mockup.png)  
 
-This web application helps you keep track of conversation you have with anyone, them being business partners or your friends.
+Essa aplicação web te ajuda a acompanhar a conversa que você tem com qualquer um, sendo eles parceiros de negócios ou seus amigos.
 
-View the [demo application](https://followphone.herokuapp.com/) live!
+Veja a [aplicação](https://followphone.herokuapp.com/) em primeira mão!
 
-## Notice for CS50 students
+## Aviso para estudantes do CS50
 
-As per [Academic Honesty](https://cs50.harvard.edu/x/2022/honesty/) guidelines, you are **not allowed** to base your projects on this one. The goal of this repository is to show the skills I've learned during CS50's course for professional purposes and future employers.
+Conforme as diretrizes de [Academic Honesty](https://cs50.harvard.edu/x/2022/honesty/) (Honestidade Acadêmica), você **não está permitido** de basear seus projetos neste. O objetivo desse repositório é mostrar as habilidades que aprendi durante o curso do CS50 para fins profissionais e empregadores futuros. Assim assumo que:
 
-## How to use
+- Você já tenha terminado o curso para estar aqui.
+- Caso contrário, não acesse qualquer conteúdo deste repositório.
+- Eu não me responsabilizo por como você usa este repositório.
 
-- Create an **account**
-- Add as many **contacts** as you want
-- Follow up with any conversation / business you have with them by creating **histories**
-- You can add **notes** for each conversation you have
-- Keep track of the most urgent conversations in your **dashboard** and quickly view who needs a reply!
+Este repositório e seu conteúdo não deve ser compartilhado sem a autorização do autor para alunos do CS50 ou para aqueles que farão o curso no futuro. Mais uma vez peço que aja com honestidade e ética, em especial se você for aluno do CS50 ou pretende cursá-lo futuramente.
 
-After adding your first history, the dashboard will show the most urgent conversations (histories) first. **You can change** the time of **dashboard alerts** in your profile, as well as your **password** too.
+## Como usar
 
-## Motivation
+- Crie uma **conta**
+- Adicione quantos **contacts** você quiser
+- Acompanhe qualquer conversa / negócio que tiver com eles por criar **histories**
+- Você pode adicionar **notas** para cada conversa que tiver
+- Acompanhe as conversas mais urgentes no seu **dashboard** e veja rapidamente quem precisa de retorno!
 
-One of the things I've worked involved following up with customers and business partners and provide assistance and support. I thought it would be useful to create my own tool with exclusive features as my first complete web application ever!
+Depois de adicionar seu primeiro history, o dashboard vai mostrar as conversas (histories) mais urgentes primeiro. **Você pode mudar** o tempo dos **alertas de dashboard** no seu perfil, bem como sua **senha**.
 
-This project is my final submission to [Harvard CS50's Introduction to Computer Science](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x) course on edX, resulting in a verified certificate, expanding my perspective about programming and opening my eyes about how computers and systems work.
+## Motivação
 
-I'm grateful for the Harvard and edX staff to make this course available for everyone!
+Uma das coisas com qual trabalhei envolveu acompanhamento de clientes e parceiros de negócio e providenciar assistência e suporte. Eu pensei que seria útil criar uma ferramenta própria e com features exclusivas como minha primeira aplicação web completa!
 
-## Running the project locally (Linux or WSL required)
+Esse é meu projeto final para o curso [Harvard CS50's Introduction to Computer Science](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x) na edX, resultando em um certificado verificado, expandindo minha perspectiva sobre programaçaõ e abrindo meus olhos sobre como computadores e sistemas funcionam.
 
-1. Clone or download project
-2. (Optional) Create and activate virtual environment
+Eu sou grato pela equipe de Harvard e da edX fazerem este curso ser disponível para todos!
+
+## Rodando o projeto localmente (Linux ou WSL necessário)
+
+1. Clone ou baixe o projeto
+2. (Opcional) Crie e ative o ambiente virtual
 
         python -m venv venv
         source venv/bin/activate
 
-3. Install project dependencies
+3. Instale as dependências do projeto
 
         pip install -r requirements.txt
 
-4. Set environment variable to tell Flask which is the application file and start server
+4. Configure uma variável ambiente para dizer ao Flask qual é o arquivo da aplicação e rode o app
 
         export FLASK_APP=application
         flask run
 
-5. Access `localhost:5500` (or any other link the terminal gives you) on your browser
+5. Acesse `localhost:5500` (ou qualquer outro link que o terminal te der) no seu navegador
 
-[See how to use](#how-to-use)
+[Veja como usar](#como-usar)
 
-## Libraries and technologies used
+## Bibliotecas e tecnologias usadas
 
-- [CS50 IDE](https://cs50.harvard.edu/x/) as development environment (switched to VS Code)
-- [Heroku](https://www.heroku.com/) as cloud platform for hosting, fast and easy deploy
-- [Flask](https://flask.palletsprojects.com/en/1.1.x/) for the app's backend
-- [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) for database communication
-- [Jinja](https://palletsprojects.com/p/jinja/) as the template engine
-- [SQLite](https://www.sqlite.org/) as the database
-- [Bootstrap](https://getbootstrap.com/) for the frontend UI and responsiveness (with some custom CSS media queries)
-- [Day.js](https://day.js.org/) for client-side date and time
-- [Cleave.js](https://nosir.github.io/cleave.js/) for input auto formatting
+- [CS50 IDE](https://cs50.harvard.edu/x/) como ambiente de desenvolvimento (substituído para o VS Code)
+- [Heroku](https://www.heroku.com/) como plataforma cloud para hospedagem, e deploy rápido e fácil
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/) para o backend
+- [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) para comunicação com banco de dados
+- [Jinja](https://palletsprojects.com/p/jinja/) como engine de template
+- [SQLite](https://www.sqlite.org/) como o banco de dados
+- [Bootstrap](https://getbootstrap.com/) para UI e responsividade
+- [Day.js](https://day.js.org/) para tempo e data no client-side
+- [Cleave.js](https://nosir.github.io/cleave.js/) para formatação automática de formulários
 
-## Useful links
+## Links úteis
 
-[Gallery of CS50's final projects](https://cs50.harvard.edu/x/2022/gallery) **(type FollowPhone to find my presentation video)**  
+[Galeria de projetos finais do CS50](https://cs50.harvard.edu/x/2022/gallery) **(digite FollowPhone para achar meu vídeo de apresentação que está em inglês)**  
 [FollowPhone Website](https://followphone.herokuapp.com)  
 [LinkedIn](https://www.linkedin.com/in/laurence-zanotti/)  
-[pt-BR version of this README (in progress)](#followphone---cs50x2020-final-project)
+[English version of this README](https://github.com/LaurenceZanotti/cs50x2020-followphone)
