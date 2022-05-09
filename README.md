@@ -8,7 +8,13 @@ View the [demo application](https://followphone.herokuapp.com/) live!
 
 ## Notice for CS50 students
 
-As per [Academic Honesty](https://cs50.harvard.edu/x/2022/honesty/) guidelines, you are **not allowed** to base your projects on this one. The goal of this repository is to show the skills I've learned during CS50's course for professional purposes and future employers.
+As per [Academic Honesty](https://cs50.harvard.edu/x/2022/honesty/) guidelines, you are **not allowed** to base your projects on this one. The goal of this repository is to show the skills I've learned during CS50's course for professional purposes and future employers. Thereby I assume that:
+
+- You have finished the course to be here.
+- If not, don't access any content from this repository.
+- I don't take any responsibility for how you use this repository. 
+
+This repository and its content must not be shared without the author's authorization for CS50 students or for those who will take the course in the future. Once again I ask that you act with honesty and ethics, in special if you are a CS50 student or pretend to take the course in the future.
 
 ## How to use
 
