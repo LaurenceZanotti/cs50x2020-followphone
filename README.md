@@ -4,7 +4,7 @@
 
 This web application helps you keep track of conversation you have with anyone, them being business partners or your friends.
 
-View the [demo application](https://followphone.herokuapp.com/) live!
+View the [demo application](https://followphone.lau.dev.br/) live!
 
 ## Notice for CS50 students
 
