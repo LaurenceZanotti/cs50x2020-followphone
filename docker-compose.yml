@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: "followphone_app"
+    build: .
+    volumes:
+     - ./:/app
+    ports:
+     - "${FLASK_PORT}:${FLASK_PORT}"
+    environment:
+     - FLASK_ENV=${FLASK_ENV}
+     - FLASK_APP=${FLASK_APP}
+    command: gunicorn -b :${FLASK_PORT} application:app

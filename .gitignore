@@ -3,3 +3,4 @@ database/
 .vscode/
 venv/
 flask_session/
+.env
